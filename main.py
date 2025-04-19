@@ -23,7 +23,7 @@ gliner_model = GLiNER.from_pretrained("urchade/gliner_medium-v2.1",cache_dir=cac
 groq_client = Groq(api_key=GROQ_API_KEY)
 
 init_qdrant_collection()
-
+populate_vectordb_from_hf()
 def extract_entities(text):
     # Tokenize the input text first
     labels = ["PRODUCT", "ISSUE", "PROBLEM", "SERVICE"]
