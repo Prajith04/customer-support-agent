@@ -17,7 +17,9 @@ templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Load models
-gliner_model = GLiNER.from_pretrained("urchade/gliner_medium-v2.1")
+cache_dir = os.environ.get("MODEL_CACHE_DIR", "/app/cache")  # Fallback to /app/cache
+os.makedirs(cache_dir, exist_ok=True)
+gliner_model = GLiNER.from_pretrained("urchade/gliner_medium-v2.1",cache_dir=cache_dir)
 groq_client = Groq(api_key=GROQ_API_KEY)
 
 init_qdrant_collection()
