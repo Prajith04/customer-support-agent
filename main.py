@@ -10,7 +10,7 @@ import os
 load_dotenv()
 from gliner import GLiNER
 from groq import Groq
-from vectordb_utils import search_vectordb, init_qdrant_collection
+from vectordb_utils import search_vectordb, init_qdrant_collection,populate_vectordb_from_hf
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
