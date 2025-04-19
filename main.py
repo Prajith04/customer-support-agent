@@ -6,7 +6,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv
 import os
-from transformers import AutoTokenizer
 # Load environment variables
 load_dotenv()
 from gliner import GLiNER
@@ -20,7 +19,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # Load models
 cache_dir = os.environ.get("MODEL_CACHE_DIR", "/app/cache")  # Fallback to /app/cache
 os.makedirs(cache_dir, exist_ok=True)
-tokenizer = AutoTokenizer.from_pretrained("microsoft/deberta-v3-base", cache_dir=cache_dir)  # Replace with appropriate tokenizer for GLiNER
 gliner_model = GLiNER.from_pretrained("urchade/gliner_medium-v2.1",cache_dir=cache_dir)
 groq_client = Groq(api_key=GROQ_API_KEY)
 
@@ -32,7 +30,7 @@ def extract_entities(text):
     labels = ["PRODUCT", "ISSUE", "PROBLEM", "SERVICE"]
     
     # Predict entities
-    return gliner_model.predict_entities(inputs['input_ids'], labels)
+    return gliner_model.predict_entities(inputs, labels)
 
 def validate_answer(user_query, retrieved_answer):
     prompt = f"""
