@@ -4,8 +4,9 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance, PointStruct
 from sentence_transformers import SentenceTransformer
 import uuid
-
-encoder = SentenceTransformer("all-MiniLM-L6-v2")
+cache_dir = os.environ.get("MODEL_CACHE_DIR", "/app/cache")  # Fallback to /app/cache
+os.makedirs(cache_dir, exist_ok=True)
+encoder =SentenceTransformer("all-MiniLM-L6-v2", cache_folder=cache_dir)
 qdrant = QdrantClient(":memory:")
 collection_name = "customer_support_docsv1"
 
