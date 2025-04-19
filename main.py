@@ -26,11 +26,10 @@ init_qdrant_collection()
 
 def extract_entities(text):
     # Tokenize the input text first
-    inputs = tokenizer(text, return_tensors="pt")  # Assuming PyTorch backend
     labels = ["PRODUCT", "ISSUE", "PROBLEM", "SERVICE"]
     
     # Predict entities
-    return gliner_model.predict_entities(inputs, labels)
+    return gliner_model.predict_entities(text, labels)
 
 def validate_answer(user_query, retrieved_answer):
     prompt = f"""
