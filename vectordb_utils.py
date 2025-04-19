@@ -47,8 +47,8 @@ def populate_vectordb_from_hf():
 
     print("Populating vector DB...")
     for item in dataset:
-        query = item.get("input", "").strip()
-        response = item.get("output", "").strip()
+        query = item.get("body", "").strip()
+        response = item.get("answer", "").strip()
         if query and response:
             add_to_vectordb(query, response)
 
