@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Support Chatbot</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        <h2>🧠 Customer Support Chatbot</h2>
+        <div class="chat-box">
+            {% for entry in chat_history %}
+                <div class="{{ 'user' if entry.sender == 'User' else 'bot' }}">
+                    <strong>{{ entry.sender }}:</strong> {{ entry.message }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <form method="post" action="/chat">
+            <input type="text" name="message" placeholder="Type your question..." required>
+            <button type="submit">Send</button>
+        </form>
+
+        {% if entities %}
+        <div class="entities">
+            <h4>🔍 Detected Entities:</h4>
+            <ul>
+                {% for text, label in entities %}
+                    <li>{{ label }}: <em>{{ text }}</em></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
