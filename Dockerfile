@@ -12,10 +12,7 @@ COPY . /app
 # Install Python packages
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
-RUN chmod -R 777 /app/.cache
-
-# Preload model into cache
-RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
+RUN mkdir -p /app/cache && chmod -R 777 /app/cache
 
 # Expose port for Hugging Face Spaces
 ENV PORT 7860
