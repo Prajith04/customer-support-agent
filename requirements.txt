@@ -6,3 +6,4 @@ groq
 qdrant-client
 sentence-transformers
 dotenv
+python-multipart
