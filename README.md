@@ -24,6 +24,13 @@ It runs both locally and on **Hugging Face Spaces via Docker**.
 
 ---
 
+## To Do List
+
+- [ ] Add Agent Support
+- [ ] Add sentiment analysis
+      
+---
+
 ## 📦 Installation
 
 ### 🔧 Requirements
