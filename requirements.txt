@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+jinja2
+gliner
+groq
+qdrant-client
+sentence-transformers
+dotenv
+python-multipart
+datasets
