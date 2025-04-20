@@ -1,5 +1,7 @@
  🧠 Customer Support Chatbot (FastAPI + Hugging Face + Qdrant)
 
+[![Hugging Face Spaces](https://img.shields.io/badge/🤗%20HuggingFace-Demo-blueviolet?logo=huggingface&logoColor=white)](https://huggingface.co/spaces/Prajith04/customer-support)
+ 
 This is an intelligent, conversational customer support chatbot built using:
 
 - 🔍 **GLiNER** for named entity extraction
