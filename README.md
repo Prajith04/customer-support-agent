@@ -7,6 +7,12 @@ sdk: docker
 pinned: false
 
 ---
+# Customer Support Space
+
+🚀 [Visit the Customer Support Space on Hugging Face](https://huggingface.co/spaces/Prajith04/customer-support)
+
+--- 
+
 # 🧠 Customer Support Chatbot (FastAPI + Hugging Face + Qdrant)
 
 This is an intelligent, conversational customer support chatbot built using:
