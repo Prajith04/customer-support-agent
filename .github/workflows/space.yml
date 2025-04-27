@@ -34,8 +34,12 @@ jobs:
           git remote add space https://$HF_TOKEN@huggingface.co/spaces/Prajith04/customer-support
           git pull --allow-unrelated-histories space main
 
+      - name: Resolve merge conflicts by accepting the Hugging Face version
+        run: |
+          git checkout --theirs .  # Accept the Hugging Face Space version for all conflicting files
+          git add .
+          git commit -m "Resolved merge conflicts by accepting Hugging Face version"
+
       - name: Commit and push changes to GitHub
         run: |
-          git add .
-          git commit -m "Sync changes from Hugging Face Space"
           git push https://$HF_TOKEN@github.com/${{ github.repository }} main
