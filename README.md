@@ -1,3 +1,6 @@
+---
+title: cutomer support
+---
 # 🧠 Customer Support Chatbot (FastAPI + Hugging Face + Qdrant)
 
 This is an intelligent, conversational customer support chatbot built using:
