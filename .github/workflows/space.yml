@@ -17,6 +17,9 @@ jobs:
       - name: Set up Hugging Face CLI
         run: |
           pip install huggingface_hub
+      - name: Configure Git pull strategy to merge
+        run: |
+          git config pull.rebase false  # Set the pull strategy to merge
 
       - name: Pull from Hugging Face Space
         env:
