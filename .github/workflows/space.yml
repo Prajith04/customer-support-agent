@@ -1,0 +1,32 @@
+name: Sync Hugging Face Space to GitHub
+on:
+  push:
+    branches: [main]  # Trigger on push to the main branch
+  schedule:
+    - cron: '0 * * * *'  # Optional: Sync every hour (adjust as needed)
+  workflow_dispatch:  # Manually trigger the workflow if needed
+
+jobs:
+  sync-from-space:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Hugging Face CLI
+        run: |
+          pip install huggingface_hub
+
+      - name: Pull from Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git remote add space https://huggingface.co/spaces/Prajith04/customer-support
+          git pull https://$HF_TOKEN@huggingface.co/spaces/Prajith04/customer-support main
+
+      - name: Commit and push changes to GitHub
+        run: |
+          git add .
+          git commit -m "Sync changes from Hugging Face Space"
+          git push origin main
