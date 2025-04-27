@@ -10,10 +10,13 @@ import os
 # Setup cache dir
 cache_dir = os.environ.get("MODEL_CACHE_DIR", "/app/cache")  # Fallback
 os.makedirs(cache_dir, exist_ok=True)
-
+api_key=os.environ.get("QDRANT_API_KEY")
 # Encoder and Qdrant config
 encoder = SentenceTransformer("all-MiniLM-L6-v2", cache_folder=cache_dir)
-qdrant = QdrantClient(":memory:")
+qdrant = QdrantClient(
+    url="https://b4e91bde-3e30-43ef-968e-c10a43f2e161.eu-west-2-0.aws.cloud.qdrant.io:6333", 
+    api_key=api_key,
+)
 collection_name = "customer_support_docsv1"
 
 # Initialize collection

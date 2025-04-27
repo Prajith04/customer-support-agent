@@ -21,9 +21,8 @@ cache_dir = os.environ.get("MODEL_CACHE_DIR", "/app/cache")  # Fallback to /app/
 os.makedirs(cache_dir, exist_ok=True)
 gliner_model = GLiNER.from_pretrained("urchade/gliner_medium-v2.1",cache_dir=cache_dir)
 groq_client = Groq(api_key=GROQ_API_KEY)
+chat_memory=[]
 
-init_qdrant_collection()
-populate_vectordb_from_hf()
 def extract_entities(text):
     # Tokenize the input text first
     labels = ["PRODUCT", "ISSUE", "PROBLEM", "SERVICE"]
@@ -96,13 +95,11 @@ async def chat(request: Request, message: str = Form(...)):
             bot_reply = generate_response(message, answer)
         else:
             bot_reply = "Sorry, I couldn't find a suitable answer. Please contact support."
+    chat_memory.append({"sender": "User", "message": message})
+    chat_memory.append({"sender": "Bot", "message": bot_reply})
 
-    chat_history = [
-        {"sender": "User", "message": message},
-        {"sender": "Bot", "message": bot_reply}
-    ]
     return templates.TemplateResponse("chat.html", {
         "request": request,
-        "chat_history": chat_history,
+        "chat_history": chat_memory,
         "entities": entity_info
     })

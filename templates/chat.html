@@ -30,6 +30,22 @@
             </ul>
         </div>
         {% endif %}
+      <div class="examples">
+        <ul>
+    <li data-query="My HP DeskJet 3755 printer is malfunctioning when printing wirelessly. Can you help?">My HP DeskJet 3755 printer is malfunctioning when printing wirelessly. Can you help?</li>
+    <li data-query="I've noticed discrepancies in my Microsoft Office 365 billing statement. Please assist.">I've noticed discrepancies in my Microsoft Office 365 billing statement. Please assist.</li>
+    <li data-query="We're experiencing intermittent server failures affecting stability. Need immediate consultation.">We're experiencing intermittent server failures affecting stability. Need immediate consultation.</li>
+        </ul>
+
+      </div>
     </div>
+  <script>
+    document.querySelectorAll('.examples li').forEach(item => {
+        item.addEventListener('click', () => {
+            document.querySelector('input[name="message"]').value = item.getAttribute('data-query');
+        });
+    });
+</script>
+
 </body>
 </html>
