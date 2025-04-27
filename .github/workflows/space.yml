@@ -17,19 +17,20 @@ jobs:
       - name: Set up Hugging Face CLI
         run: |
           pip install huggingface_hub
+
       - name: Configure Git pull strategy to merge
         run: |
           git config pull.rebase false  # Set the pull strategy to merge
 
-      - name: Pull from Hugging Face Space
+      - name: Pull from Hugging Face Space with allow-unrelated-histories
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git remote add space https://huggingface.co/spaces/Prajith04/customer-support
-          git pull https://$HF_TOKEN@huggingface.co/spaces/Prajith04/customer-support main
+          git remote add space https://$HF_TOKEN@huggingface.co/spaces/Prajith04/customer-support
+          git pull --allow-unrelated-histories space main
 
       - name: Commit and push changes to GitHub
         run: |
           git add .
           git commit -m "Sync changes from Hugging Face Space"
-          git push origin main
+          git push https://$HF_TOKEN@github.com/${{ github.repository }} main
