@@ -1,5 +1,11 @@
 ---
-title: cutomer support
+title: Customer Support
+emoji: 🐠
+colorFrom: yellow
+colorTo: red
+sdk: docker
+pinned: false
+
 ---
 # 🧠 Customer Support Chatbot (FastAPI + Hugging Face + Qdrant)
 
