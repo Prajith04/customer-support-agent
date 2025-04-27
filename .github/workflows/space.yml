@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]  # Trigger on push to the main branch
   schedule:
-    - cron: '0 * * * *'  # Optional: Sync every hour (adjust as needed)
+    - cron: '0 0 * * *'  # Optional: Sync every hour (adjust as needed)
   workflow_dispatch:  # Manually trigger the workflow if needed
 
 jobs:
