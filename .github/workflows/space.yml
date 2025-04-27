@@ -42,6 +42,6 @@ jobs:
 
       - name: Commit and push changes to GitHub
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Default GitHub Actions token for authentication
         run: |
-          git push https://$GH_TOKEN@github.com/${{ github.repository }} main
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main
