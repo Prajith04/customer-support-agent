@@ -41,5 +41,7 @@ jobs:
           git commit -m "Resolved merge conflicts by accepting Hugging Face version"
 
       - name: Commit and push changes to GitHub
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git push https://$HF_TOKEN@github.com/${{ github.repository }} main
+          git push https://$GH_TOKEN@github.com/${{ github.repository }} main
