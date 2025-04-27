@@ -32,7 +32,7 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           git remote add space https://$HF_TOKEN@huggingface.co/spaces/Prajith04/customer-support
-          git pull --allow-unrelated-histories space main
+          git pull --allow-unrelated-histories space main || echo "Merge conflict detected"
 
       - name: Resolve merge conflicts by accepting the Hugging Face version
         run: |
