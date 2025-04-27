@@ -18,6 +18,11 @@ jobs:
         run: |
           pip install huggingface_hub
 
+      - name: Configure Git identity
+        run: |
+          git config --global user.email "prajithr004@gmail.com"  # Replace with your email
+          git config --global user.name "Prajith04"  # Replace with your name
+
       - name: Configure Git pull strategy to merge
         run: |
           git config pull.rebase false  # Set the pull strategy to merge
