@@ -79,6 +79,8 @@ Compose your response:
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
+    global chat_memory
+    chat_memory = []  # Reset chat history on reload
     return templates.TemplateResponse("chat.html", {"request": request, "chat_history": []})
 
 @app.post("/chat", response_class=HTMLResponse)
